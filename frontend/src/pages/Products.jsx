@@ -1,11 +1,18 @@
-import React from 'react'
+import {CartContext} from "../context/Cartcontext";
+import { useContext } from "react";
+
 
 const Products = () => {
+
+
+
+  const {cart , addToCart , increaseQty, decreaseQty, clearCart } = useContext(CartContext)
     const products = [
   { id: 1, name: "Burger", price: 200 },
   { id: 2, name: "Pizza", price: 500 },
   { id: 3, name: "Pasta", price: 350 }
 ];
+
   return (
     <div className='wrappercards'>
     {products.map((item)=>(
@@ -13,7 +20,7 @@ const Products = () => {
         <h5>No.{item.id}</h5>
         <h1>{item.name}</h1>
         <p>Rs: {item.price}</p>
-        <button>Add to cart</button>
+        <button onClick={()=>{addToCart(item)}}>Add to cart</button>
         </div>
     ))}
     </div>
